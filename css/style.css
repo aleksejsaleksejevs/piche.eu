@@ -429,6 +429,7 @@ z-index:5;
   width: 16px;
   position: relative;
   top: 1em;
+  margin: 0px 15px 0px 0px;
 }
 
 #main-menu {
@@ -484,12 +485,35 @@ ul.menu{
 
 #main-menu a {
   padding: 11px 20px;
-  display: block;
+  display: inline-block;
   text-decoration: none;
   color: #999;
   font-weight: 500;
 }
 
+#main-menu li a.active{
+  color:#3ebccd;
+  border-bottom: 3px solid #3ebccd;  
+}
+
+#main-menu li:after {
+  content: '';
+  display: block;
+  border-bottom: 3px solid #3ebccd;
+  width: 0;
+  -webkit-transition: 0.8s;
+          transition: 0.8s;
+}
+
+#main-menu a:not(.active):hover{
+  color:#3ebccd;
+}
+
+#main-menu li:not(.active-trail):hover:after{ /*visiem aktiviem li elementiem ir japaradas .active klasei, ka valodam*/
+  width: 100%;
+}
+
+/*
 #main-menu li:hover >a{
   background: #ccc;
 }
@@ -498,7 +522,7 @@ ul.menu{
   background: #3F5364;
   border-top: 1px solid #17B495;
 }
-
+*/
 
 #main-menu li li {
   float:none;
