@@ -10,10 +10,6 @@ stylesheets[all][] = css/jquery.maximage.css
 stylesheets[all][] = css/aleksandrs.css
 stylesheets[all][] = css/maximage.css
 scripts[] = js/additional.js
-scripts[] = js/collageLauncher.js
-scripts[] = js/jquery.collagePlus.min.js
-scripts[] = js/jquery.collageCaption.js
-scripts[] = js/jquery.removeWhitespace.js
 
 regions[user_menu]  	 = User menu
 regions[languages]		 = Languages
@@ -41,6 +37,8 @@ regions[slide-2]		 = Slide 2 Parallax position
 regions[slide-2-left-sidebar]   = Left Sidebar Slide 2
 regions[slide-2-content]         = Content Slide 2
 regions[slide-3]		 = Slide 3 Parallax position
+regions[slide-3-left-sidebar]   = Left Sidebar Slide 3
+regions[slide-3-content]         = Content Slide 3
 
 
 features[] = logo
