@@ -10,6 +10,11 @@ stylesheets[all][] = css/jquery.maximage.css
 stylesheets[all][] = css/aleksandrs.css
 stylesheets[all][] = css/maximage.css
 scripts[] = js/additional.js
+scripts[] = js/jquery.lazylinepainter-1.1.min.js
+scripts[] = js/raphael-min.js
+scripts[] = js/jquery.singlePageNav.js
+scripts[] = js/curtain.js
+
 
 regions[user_menu]  	 = User menu
 regions[languages]		 = Languages

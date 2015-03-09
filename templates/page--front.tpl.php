@@ -69,9 +69,8 @@
     <nav id="main-menu"  role="navigation">
       <a class="nav-toggle" href="#">Navigation</a>
       <div class="menu-navigation-container">
-		<div class="logo-small"><a href="<?php echo $base_url; ?>"></a></div>
-		<?php 
-          $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu')); 
+		<?php
+          $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu'));
           print drupal_render($main_menu_tree);
         ?>
 		<div class="languages">
@@ -87,12 +86,12 @@
 
 
 <?php if ($is_front): ?>
-  
+
   <?php print render($page['slideshow']); ?>
 
   <?php print render($page['front_welcome']); ?>
-         
-  <?php if ($page['top_first'] || $page['top_second'] || $page['top_third']): ?> 
+
+  <?php if ($page['top_first'] || $page['top_second'] || $page['top_third']): ?>
     <div id="top-area" class="clearfix">
       <?php if ($page['top_first']): ?>
       <div class="column"><?php print render($page['top_first']); ?></div>
@@ -105,7 +104,7 @@
       <?php endif; ?>
     </div>
   <?php endif; ?>
-   
+
 <?php endif; ?>
 
 <div id="container">
@@ -165,13 +164,13 @@
 						<?php print render($page['content']); ?>
 					  </section> <!-- /#main -->
 					</div>
-				  
+
 					<?php if ($page['sidebar_first']): ?>
 					  <aside id="sidebar-first" role="complementary">
 						<?php print render($page['sidebar_first']); ?>
 					  </aside>  <!-- /#sidebar-first -->
 					<?php endif; ?>
-				  
+
 					</div>
 
 					<?php if ($page['sidebar_second']): ?>
@@ -183,7 +182,7 @@
 					<?php if ($is_front): ?>
 
 					<div id="footer_wrapper" class="footer_block bottom_widget">
-					  <?php if ($page['bottom_widget_1'] || $page['bottom_widget_2'] || $page['bottom_widget_3']): ?> 
+					  <?php if ($page['bottom_widget_1'] || $page['bottom_widget_2'] || $page['bottom_widget_3']): ?>
 						<div id="footer-area" class="clearfix">
 						  <?php if ($page['bottom_widget_1']): ?>
 						  <div class="column"><?php print render($page['bottom_widget_1']); ?></div>
@@ -205,9 +204,9 @@
 			</div>
 	</section>
 	<section id="presentation" data-type="background" data-speed="10">
-						<?php print render($page['slide-1-test']); ?>	
-	
-	
+						<?php print render($page['slide-1-test']); ?>
+
+
 					<div id="testdiv">
 
 					</div>
@@ -216,7 +215,7 @@
 	<section id="angaru-katalogs" data-type="background" data-speed="10">
 
 		<?php print render($page['slide-2']); ?>
-		
+
 					<div id="slide-2-left-sidebar">
 						<?php print render($page['slide-2-left-sidebar']); ?>
 					</div>
@@ -240,7 +239,7 @@
 <div id="footer">
 
   <div id="footer_wrapper">
-    <?php if ($page['footer_first'] || $page['footer_second'] || $page['footer_third'] || $page['footer_forth']): ?> 
+    <?php if ($page['footer_first'] || $page['footer_second'] || $page['footer_third'] || $page['footer_forth']): ?>
       <div id="footer-area" class="clearfix">
         <?php if ($page['footer_first']): ?>
         <div class="column"><?php print render($page['footer_first']); ?></div>
@@ -257,7 +256,7 @@
       </div>
     <?php endif; ?>
   </div>
-  
+
   <div class="footer_credit">
 
   <!-- Social Links -->
@@ -274,7 +273,7 @@
      </ul>
     </div>
   <?php endif; ?>
-      
+
     <div id="copyright">
       <p class="copyright"><?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <?php print $site_name; ?> </p> <p class="credits"> <?php print t('Design by'); ?>  </p>
       <div class="clear"></div>
@@ -284,5 +283,18 @@
 </div>
 
 </div>
+<script>
+(function ($) {
 
+	$(window).ready(function() {
 
+            // The actual plugin
+            $('.menu-navigation-container ul.menu ').singlePageNav({
+                offset: $('.menu-navigation-container ul.menu').outerHeight(),
+                filter: ':not(.last a)',
+                updateHash: true,
+
+            });
+          });
+})(jQuery);
+</script>

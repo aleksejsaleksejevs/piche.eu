@@ -64,14 +64,15 @@
  * @see template_process()
  */
 ?>
+<!-- <?php global $base_url; ?> -->
 
   <div class="menu_wrapper">
     <nav id="main-menu"  role="navigation">
       <a class="nav-toggle" href="#">Navigation</a>
       <div class="menu-navigation-container">
-	     <div class="logo-small"><a href="<?php echo $base_url; ?>"></a></div>
-        <?php 
-          $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu')); 
+	     <!-- <div class="logo-small"><a href="<?php echo $base_url; ?>"></a></div> -->
+        <?php
+          $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu'));
           print drupal_render($main_menu_tree);
         ?>
 			<div class="languages">
@@ -87,12 +88,12 @@
 
 
 <?php if ($is_front): ?>
-  
+
   <?php print render($page['slideshow']); ?>
 
   <?php print render($page['front_welcome']); ?>
-         
-  <?php if ($page['top_first'] || $page['top_second'] || $page['top_third']): ?> 
+
+  <?php if ($page['top_first'] || $page['top_second'] || $page['top_third']): ?>
     <div id="top-area" class="clearfix">
       <?php if ($page['top_first']): ?>
       <div class="column"><?php print render($page['top_first']); ?></div>
@@ -105,12 +106,12 @@
       <?php endif; ?>
     </div>
   <?php endif; ?>
-   
+
 <?php endif; ?>
 
 
   <div id="container">
-  
+
   <div id="header_wrapper">
 
   <div class="user-menu-wrapper clearfix">
@@ -150,7 +151,7 @@
 
 </div>
 
-  
+
     <div class="container-wrap">
       <div class="content-sidebar-wrap">
         <div id="content">
@@ -167,13 +168,13 @@
             <?php print render($page['content']); ?>
           </section> <!-- /#main -->
         </div>
-      
+
         <?php if ($page['sidebar_first']): ?>
           <aside id="sidebar-first" role="complementary">
             <?php print render($page['sidebar_first']); ?>
           </aside>  <!-- /#sidebar-first -->
         <?php endif; ?>
-      
+
         </div>
 
         <?php if ($page['sidebar_second']): ?>
@@ -185,7 +186,7 @@
         <?php if ($is_front): ?>
 
         <div id="footer_wrapper" class="footer_block bottom_widget">
-          <?php if ($page['bottom_widget_1'] || $page['bottom_widget_2'] || $page['bottom_widget_3']): ?> 
+          <?php if ($page['bottom_widget_1'] || $page['bottom_widget_2'] || $page['bottom_widget_3']): ?>
             <div id="footer-area" class="clearfix">
               <?php if ($page['bottom_widget_1']): ?>
               <div class="column"><?php print render($page['bottom_widget_1']); ?></div>
@@ -204,12 +205,10 @@
         <?php endif; ?>
 
     </div>
-	
-	
-</div>
-
 
 
 </div>
 
 
+
+</div>
