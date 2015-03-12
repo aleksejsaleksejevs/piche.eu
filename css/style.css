@@ -1439,6 +1439,7 @@ width: 100%;
   position: relative;
 }
 
+
 #slide-2-left-sidebar .view-content{
   padding:15px;
 }
@@ -1468,6 +1469,21 @@ width: 100%;
 #slide-2-content{
   padding-left:/* 70px;*/300px;
   min-height:350px;
+}
+
+#projects-left img{
+  position:relative;
+  top:300px;
+  left:100px;
+  z-index:10;
+}
+
+
+#projects-right img{
+  position:relative;
+  top:220px;
+  left:90%;
+  z-index:10;
 }
 
 #slide-3-content{

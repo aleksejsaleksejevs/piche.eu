@@ -4,6 +4,51 @@
 	$(window).ready(function() {
 
 
+
+		//changed scrollTop to scrollLeft
+
+		var step = 25;
+		var scrolling = false;
+
+		// Wire up events for the 'scrollUp' link:
+		$("#projects-left img").bind("click", function(event) {
+		    event.preventDefault();
+		    // Animates the scrollTop property by the specified
+		    // step.
+		    $(".view-realiz-tie-projekti .view-content").animate({
+		        scrollLeft: "-=" + step + "px"
+		    });
+		}).bind("mouseover", function(event) {
+		    scrolling = true;
+		    scrollContent("left");
+		}).bind("mouseout", function(event) {
+		    scrolling = false;
+		});
+
+
+		$("#projects-right img").bind("click", function(event) {
+		    event.preventDefault();
+		    $(".view-realiz-tie-projekti .view-content").animate({
+		        scrollLeft: "+=" + step + "px"
+		    });
+		}).bind("mouseover", function(event) {
+		    scrolling = true;
+		    scrollContent("right");
+		}).bind("mouseout", function(event) {
+		    scrolling = false;
+		});
+
+		function scrollContent(direction) {
+		    var amount = (direction === "left" ? "-=5px" : "+=5px");
+		    $(".view-realiz-tie-projekti .view-content").animate({
+		        scrollLeft: amount
+		    }, 1, function() {
+		        if (scrolling) {
+		            scrollContent(direction);
+		        }
+		    });
+		}
+
 		// $('#main-menu').visualNav({
 			// // target the .menu class in the menu
 			// link : 'ul.menu'

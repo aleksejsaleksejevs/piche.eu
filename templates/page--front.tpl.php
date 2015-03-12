@@ -220,6 +220,8 @@
 						<?php print render($page['slide-2-left-sidebar']); ?>
 					</div>
 					<div id="slide-2-content">
+            <div id="projects-left"><img src="sites/all/themes/software-responsive-theme/images/arrow_left.png" /></div>
+            <div id="projects-right"><img src="sites/all/themes/software-responsive-theme/images/arrow_right.png" /></div>
 						<?php print render($page['slide-2-content']); ?>
 					</div>
 
