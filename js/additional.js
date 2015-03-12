@@ -3,6 +3,7 @@
 
 	$(window).ready(function() {
 
+
 		// $('#main-menu').visualNav({
 			// // target the .menu class in the menu
 			// link : 'ul.menu'
@@ -110,6 +111,13 @@
 			"strokeWidth": 3,
 			"strokeColor": "#fff"
 		}).lazylinepainter('paint');
+
+
+
+		$("#videojs-479-field-presentation-video-video").prop('muted', true);
+		$("#videojs-478-field-presentation-video-video").prop('muted', true);
+
+
 	});
 
 
