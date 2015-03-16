@@ -327,10 +327,6 @@ video {
   height:auto;
 }
 
-video {
-  display:block;
-}
-
 audio {
   max-width:100%;
 }
@@ -937,14 +933,23 @@ color:red;
   margin-left:40px;
 }
 
-#block-menu-menu-front-page-buttons .last a svg{
+#block-menu-menu-front-page-buttons .last svg{
   padding-top:8px;
+  margin-left:17px;
+}
+
+#block-menu-menu-front-page-buttons .last a{
+  position:relative;
+  top:-20px;
+}
+
+#block-menu-menu-front-page-buttons .first svg{
   margin-left:10px;
 }
 
-#block-menu-menu-front-page-buttons .first a svg{
-
-  margin-left:10px;
+#block-menu-menu-front-page-buttons .first a{
+  position:relative;
+  top:-20px;
 }
 
 .theme-default .nivo-directionNav a {
@@ -1029,12 +1034,28 @@ ul.links {
 
 
 /*parallax*/
+
+
+
+video#bgvid {
+
+position: fixed; right: 0; bottom: 0;
+
+min-width: 100%; min-height: 100%;
+
+width: auto; height: auto; z-index: -100;
+
+background: url(../images/bg_1.jpg) no-repeat;
+
+background-size: cover;
+/* filter:blur(5px);
+-webkit-filter:blur(5px); */
+
+}
+
+
+
 #intro {
-background: url(../images/bg_1.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
   min-height: 100vh;
  /*height: 100vh;*/
   margin: 0 auto;
@@ -1045,11 +1066,11 @@ background: url(../images/bg_1.jpg) no-repeat center center fixed;
 
 
 video{
-  width: 100%;
-  height: 99.6vh;
-  z-index: -100;
-  background-size: cover;
-
+  min-height: 100%;
+  min-width: 100%;
+  max-width: 100%!important; /*over ride any existing responsive image styling //here is changed from 10000% */
+  margin: 0 auto!important;
+  height:100vh;
 }
 
 
@@ -1112,18 +1133,25 @@ background: url(../images/bg_2.jpg) no-repeat center center fixed;
 
 #block-views-jaunumi-block .isotope-element{
   width:225px;
-  height:240px;
-  background-color:#f4f4f4;
+  background-color:#2e3444;
   margin:5px;
+  text-align:right;
+  position:relative;
 }
 
 #block-views-jaunumi-block .isotope-element a{
-  color:#6f6f6f;
+  color:#d5eedc;
+  text-transform: uppercase;
+  font-size:15px;
 }
+
+#block-views-jaunumi-block .isotope-element h5{
+  padding-right:10px;
+  }
 
 #block-views-jaunumi-block h6.inserted{
   font-size:0.8em;
-  color:#6f6f6f;
+  color:#6f6f6fe3;
   bottom:0px;
 }
 /*
@@ -1300,6 +1328,10 @@ font-size:14px;
   padding-left:20px;
 }
 
+.jspPane .field{
+  width:95%;
+}
+
 .region-content ul.flippy{
   position:absolute;
   width:40%;
@@ -1412,18 +1444,41 @@ width: 100%;
 
 /*projektu horizontalais scroll*/
 
-.view-realiz-tie-projekti #isotope-container .isotope-element a{
-  position:absolute;
-  width:100%;
-  height:100%;
-}
-
 .view-realiz-tie-projekti .view-content{
-  overflow: auto;
+  overflow:hidden;
+  position:relative;
 }
 
 .view-realiz-tie-projekti .view-content #isotope-container{
   height: 100vh;
+}
+
+.view-realiz-tie-projekti .view-content #isotope-container .isotope-element{
+ overflow:hidden;
+}
+
+.view-realiz-tie-projekti .view-content #isotope-container .isotope-element:hover span img{
+  -webkit-transform:scale(1.1);
+  transform:scale(1.1);
+  z-index:0;
+}
+
+
+
+.view-realiz-tie-projekti #isotope-container .isotope-element span.views-field-title a{
+  position:absolute;
+  width:100%;
+  height:100%;
+  z-index:1;
+}
+
+.view-realiz-tie-projekti .view-content #isotope-container .isotope-element:hover span.views-field-title a{
+  z-index:1;
+}
+
+.view-realiz-tie-projekti .view-content #isotope-container .isotope-element img{
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
 }
 
 
@@ -1436,7 +1491,6 @@ width: 100%;
 #slide-2-left-sidebar{
   width: /*70px;*/300px;
   float: left;
-  position: relative;
 }
 
 
@@ -1467,23 +1521,32 @@ width: 100%;
 }
 
 #slide-2-content{
-  padding-left:/* 70px;*/300px;
+  margin-left:/* 70px;*/300px;
   min-height:350px;
+  position:relative;
+}
+
+#projects-left{
+  position:absolute;
+  bottom:50%;
+  left:50px;
+  z-index:10;
+  width:116px;
+  cursor: pointer;
 }
 
 #projects-left img{
-  position:relative;
-  top:300px;
-  left:100px;
-  z-index:10;
+  display:none;
 }
 
 
-#projects-right img{
-  position:relative;
-  top:220px;
-  left:90%;
+#projects-right{
+  position:absolute;
+  bottom:50%;
+  right:50px;
   z-index:10;
+  width:116px;
+  cursor: pointer;
 }
 
 #slide-3-content{
@@ -1648,144 +1711,290 @@ width: 100%;
 .form-type-radio label.option{
   display:inline-block;
   position:relative;
-  padding-left:85px;
+  margin-left:45px;
   padding-top:8px;
+  padding-left:65px;
   width:290px;
   height:35px;
-  left:-25px;
+  left:-75px;
 
 }
 
 label[for=edit-field-burgera-tips-tid-all]{
-  background:url(../images/icon/icon1.png) no-repeat;
+  background-image:url(../images/icon/icon1.png);
+  background-repeat: no-repeat;
   background-position:25px 0px;
 }
 
 .views-exposed-widgets [type="radio"]:checked + label[for=edit-field-burgera-tips-tid-all]{
   color:#00ACCA;
-  background: #dfdfdf; /* Old browsers */
-  background: -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
-  background: linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */
+  width:270px;
+  background-image:url(../images/icon/icon1_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon1_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon1_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon1_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon1_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon1_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
   border-left:solid #777;
-  background:url(../images/icon/icon1_blu.png) no-repeat left;
-  background-position:20px 0px;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
+  z-index:1000;
+}
+
+
+#edit-field-burgera-tips-tid-wrapper label.option:hover[for=edit-field-burgera-tips-tid-all]{
+  cursor: pointer;
+  color:#00ACCA;
+  width:270px;
+  background-image:url(../images/icon/icon1_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon1_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon1_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon1_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon1_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon1_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
+  border-left:solid #777;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
   z-index:1000;
 }
 
 
 label[for=edit-field-burgera-tips-tid-50]{
-  background:url(../images/icon/icon2.png) no-repeat left;
+  background-image:url(../images/icon/icon2.png);
+  background-repeat: no-repeat;
   background-position:25px 0px;
 }
 
 .views-exposed-widgets [type="radio"]:checked + label[for=edit-field-burgera-tips-tid-50]{
   color:#00ACCA;
-  background: #dfdfdf; /* Old browsers */
-  background: -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
-  background: linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */
+  width:270px;
+  background-image:url(../images/icon/icon2_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon2_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon2_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon2_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon2_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon2_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
   border-left:solid #777;
-  background:url(../images/icon/icon2_blu.png) no-repeat left;
-  background-position:20px 0px;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
+  z-index:1000;
+}
+
+
+#edit-field-burgera-tips-tid-wrapper label.option:hover[for=edit-field-burgera-tips-tid-50]{
+  cursor: pointer;
+  color:#00ACCA;
+  width:270px;
+  background-image:url(../images/icon/icon2_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon2_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon2_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon2_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon2_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon2_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
+  border-left:solid #777;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
   z-index:1000;
 }
 
 label[for=edit-field-burgera-tips-tid-52]{
-  background:url(../images/icon/icon3.png) no-repeat left;
+  background-image:url(../images/icon/icon3.png);
+  background-repeat: no-repeat;
   background-position:25px 0px;
 }
 
 .views-exposed-widgets [type="radio"]:checked + label[for=edit-field-burgera-tips-tid-52]{
   color:#00ACCA;
-  background: #dfdfdf; /* Old browsers */
-  background: -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
-  background: linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */
+  width:270px;
+  background-image:url(../images/icon/icon3_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon3_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon3_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon3_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon3_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon3_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
   border-left:solid #777;
-  background:url(../images/icon/icon3_blu.png) no-repeat left;
-  background-position:20px 0px;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
+  z-index:1000;
+}
+
+
+#edit-field-burgera-tips-tid-wrapper label.option:hover[for=edit-field-burgera-tips-tid-52]{
+  cursor: pointer;
+  color:#00ACCA;
+  width:270px;
+  background-image:url(../images/icon/icon3_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon3_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon3_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon3_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon3_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon3_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
+  border-left:solid #777;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
   z-index:1000;
 }
 
 label[for=edit-field-burgera-tips-tid-51]{
-  background:url(../images/icon/icon4.png) no-repeat left;
+  background-image:url(../images/icon/icon4.png);
+  background-repeat: no-repeat;
   background-position:25px 0px;
 }
 
 .views-exposed-widgets [type="radio"]:checked + label[for=edit-field-burgera-tips-tid-51]{
   color:#00ACCA;
-  background: #dfdfdf; /* Old browsers */
-  background: -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
-  background: linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */
+  width:270px;
+  background-image:url(../images/icon/icon4_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon4_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon4_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon4_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon4_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon4_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
   border-left:solid #777;
-  background:url(../images/icon/icon4_blu.png) no-repeat left;
-  background-position:20px 0px;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
+  z-index:1000;
+}
+
+
+#edit-field-burgera-tips-tid-wrapper label.option:hover[for=edit-field-burgera-tips-tid-51]{
+  cursor: pointer;
+  color:#00ACCA;
+  width:270px;
+  background-image:url(../images/icon/icon4_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon4_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon4_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon4_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon4_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon4_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
+  border-left:solid #777;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
   z-index:1000;
 }
 
 label[for=edit-field-burgera-tips-tid-54]{
-  background:url(../images/icon/icon5.png) no-repeat left;
+  background-image:url(../images/icon/icon5.png);
+  background-repeat: no-repeat;
   background-position:25px 0px;
 }
 
 .views-exposed-widgets [type="radio"]:checked + label[for=edit-field-burgera-tips-tid-54]{
   color:#00ACCA;
-  background: #dfdfdf; /* Old browsers */
-  background: -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
-  background: linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */
+  width:270px;
+  background-image:url(../images/icon/icon5_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon5_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon5_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon5_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon5_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon5_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
   border-left:solid #777;
-  background:url(../images/icon/icon5_blu.png) no-repeat left;
-  background-position:20px 0px;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
+  z-index:1000;
+}
+
+
+#edit-field-burgera-tips-tid-wrapper label.option:hover[for=edit-field-burgera-tips-tid-54]{
+  cursor: pointer;
+  color:#00ACCA;
+  width:270px;
+  background-image:url(../images/icon/icon5_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon5_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon5_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon5_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon5_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon5_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
+  border-left:solid #777;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
+  z-index:1000;
   z-index:1000;
 }
 
 label[for=edit-field-burgera-tips-tid-53]{
-  background:url(../images/icon/icon6.png) no-repeat left;
+  background-image:url(../images/icon/icon6.png);
+  background-repeat: no-repeat;
   background-position:25px 0px;
 }
 
 .views-exposed-widgets [type="radio"]:checked + label[for=edit-field-burgera-tips-tid-53]{
   color:#00ACCA;
-  background: #dfdfdf; /* Old browsers */
-  background: -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
-  background: linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */
+  width:270px;
+  background-image:url(../images/icon/icon6_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon6_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon6_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon6_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon6_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon6_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
   border-left:solid #777;
-  background:url(../images/icon/icon6_blu.png) no-repeat left;
-  background-position:20px 0px;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
   z-index:1000;
 }
 
-#edit-field-burgera-tips-tid-wrapper label.option:hover{
-  color:#00ACCA;
+#edit-field-burgera-tips-tid-wrapper label.option:hover[for=edit-field-burgera-tips-tid-53]{
   cursor: pointer;
+  color:#00ACCA;
+  width:270px;
+  background-image:url(../images/icon/icon6_blu.png), -moz-linear-gradient(left, #dfdfdf 0%, #f8f8f8 100%); /* FF3.6+ */
+  background-image:url(../images/icon/icon6_blu.png), -webkit-gradient(linear, left top, right top, color-stop(0%,#dfdfdf), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+  background-image:url(../images/icon/icon6_blu.png), -webkit-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+  background-image:url(../images/icon/icon6_blu.png), -o-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* Opera 11.10+ */
+  background-image:url(../images/icon/icon6_blu.png), -ms-linear-gradient(left, #dfdfdf 0%,#f8f8f8 100%); /* IE10+ */
+  background-image:url(../images/icon/icon6_blu.png), linear-gradient(to right, #dfdfdf 0%,#f8f8f8 100%); /* W3C */;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f8f8f8',GradientType=1 ); /* IE6-9 */
+  border-left:solid #777;
+  background-repeat: no-repeat;
+  background-position:0px 0px;
+  margin-left:-10px;
+  padding-left:50px;
+  left:-8px;
+  z-index:1000;
 }
 
 
@@ -1811,30 +2020,33 @@ label[for=edit-field-burgera-tips-tid-53]{
 }
 
 .views-exposed-form .slider-filter-processed .form-item-field-kolonnas-augstums-value-min{
-  display:inline-block;
+  position:relative;
 }
 
 .views-exposed-form .slider-filter-processed .form-item-field-kolonnas-augstums-value-max{
-  display:inline-block;
-  margin-left:140px;
+position:absolute;
+  top:27px;
+  right:-13px;
 }
 
 .views-exposed-form .slider-filter-processed .form-item-field--kas-platums-value-min{
-  display:inline-block;
+  position:relative;
 }
 
 .views-exposed-form .slider-filter-processed .form-item-field--kas-platums-value-max{
-  display:inline-block;
-  margin-left:140px;
+position:absolute;
+  top:27px;
+  right:-13px;
 }
 
 .views-exposed-form .slider-filter-processed .form-item-field--kas-garums-value-min{
-  display:inline-block;
+  position:relative;
 }
 
 .views-exposed-form .slider-filter-processed .form-item-field--kas-garums-value-max{
-  display:inline-block;
-    margin-left:140px;
+  position:absolute;
+  top:27px;
+  right:-13px;
 }
 
 .ui-slider .ui-slider-handle{
@@ -1849,6 +2061,11 @@ label[for=edit-field-burgera-tips-tid-53]{
 
 #views-exposed-form-burger-map-block .views-exposed-widget{
   width:240px;
+  position:relative;
+}
+
+.slider-filter-processed{
+  margin-top:20px;
 }
 
 #views-exposed-form-burger-map-block #edit-field-burgera-tips-tid-wrapper{
@@ -1862,6 +2079,10 @@ label[for=edit-field-burgera-tips-tid-53]{
 
 #views-exposed-form-burger-map-block .views-exposed-widgets input{
   width:40px;
+}
+
+#views-exposed-form-burger-map-block .views-exposed-widgets .form-text {
+  padding: 0px;
 }
 
 .gmnoprint img {
@@ -1885,7 +2106,6 @@ label[for=edit-field-burgera-tips-tid-53]{
 .gm-style .gm-style-iw{
   background-color:#FBFBFB;
   text-align:center;
-
 }
 
 .balloon{
@@ -1899,9 +2119,9 @@ label[for=edit-field-burgera-tips-tid-53]{
 }
 
 .balloon H1{
-  position:relative;
+  position:absolute;
   width:150px;
-  bottom:25px;
+  bottom:65px;
 }
 
 .balloon H1 a{

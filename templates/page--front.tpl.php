@@ -109,6 +109,9 @@
 
 <div id="container">
 	<section id="intro" data-type="background" data-speed="10">
+    <video autoplay="autoplay" preload="auto" loop="loop" id="bgvid">
+      <source src="//localhost/piche2/sites/all/themes/software-responsive-theme/video/timelapse.mp4" type="video/mp4">
+    </video>
 				<?php print render($page['slide-1']); ?>
 				<div class="container-wrap">
 				  <div class="content-sidebar-wrap">
@@ -207,9 +210,9 @@
 						<?php print render($page['slide-1-test']); ?>
 
 
-					<div id="testdiv">
+					<!-- <div id="testdiv">
 
-					</div>
+					</div> -->
 
 	</section>
 	<section id="angaru-katalogs" data-type="background" data-speed="10">

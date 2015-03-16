@@ -1,16 +1,15 @@
-
 (function ($) {
 
 	$(window).ready(function() {
 
 
-
+		//Realizetie horizontal scroll
 		//changed scrollTop to scrollLeft
 
 		var step = 25;
 		var scrolling = false;
 
-		// Wire up events for the 'scrollUp' link:
+		// Wire up events for the 'scrollLeft' link:
 		$("#projects-left img").bind("click", function(event) {
 		    event.preventDefault();
 		    // Animates the scrollTop property by the specified
@@ -18,23 +17,22 @@
 		    $(".view-realiz-tie-projekti .view-content").animate({
 		        scrollLeft: "-=" + step + "px"
 		    });
-		}).bind("mouseover", function(event) {
+		}).bind("mousedown", function(event) {
 		    scrolling = true;
 		    scrollContent("left");
-		}).bind("mouseout", function(event) {
+		}).bind("mouseup", function(event) {
 		    scrolling = false;
 		});
-
 
 		$("#projects-right img").bind("click", function(event) {
 		    event.preventDefault();
 		    $(".view-realiz-tie-projekti .view-content").animate({
 		        scrollLeft: "+=" + step + "px"
 		    });
-		}).bind("mouseover", function(event) {
+		}).bind("mousedown", function(event) {
 		    scrolling = true;
 		    scrollContent("right");
-		}).bind("mouseout", function(event) {
+		}).bind("mouseup", function(event) {
 		    scrolling = false;
 		});
 
@@ -49,24 +47,37 @@
 		    });
 		}
 
-		// $('#main-menu').visualNav({
-			// // target the .menu class in the menu
-			// link : 'ul.menu'
-		// });  ///////////////////////////////////not('.menu-navigation-container .menu ul li.last').
+		$(".view-realiz-tie-projekti .view-content").scroll(function () {
+		    var x = $(this).scrollLeft();
+		    if (x > 80) {
+		        $('#projects-left img').fadeIn();
+		    } else {
+		        $('#projects-left img').fadeOut(1300);
+		    }
 
-		$("#block-menu-menu-front-page-buttons li.first a").each(function(i){
-		// $(".form-item-field-burgera-tips-tid label").each(function(i){
-			// $(this).prepend('<img src="sites/all/themes/software-responsive-theme/images/icons/pin1.png"/>');
-			// $(this).addClass("burg-filter" +(i+1));
+		});
+
+
+    $(".view-realiz-tie-projekti .view-content").scroll(function() {
+        if ($('.view-realiz-tie-projekti .view-content #isotope-container').width() <= ($(".view-realiz-tie-projekti .view-content").width() + $(".view-realiz-tie-projekti .view-content").scrollLeft())) {
+					$('#projects-right img').fadeOut(1300);
+        } else {
+		        $('#projects-right img').fadeIn();
+		    }
+    });
+
+		$("#block-menu-menu-front-page-buttons li.first").each(function(i){
 			$(this).attr('id', 'button_kalk');
 		});
 
-		$("#block-menu-menu-front-page-buttons li.last a").each(function(i){
+		$("#block-menu-menu-front-page-buttons li.last").each(function(i){
 			$(this).attr('id', 'button_burg');
 		});
 
+		//add points to burger scrollbar
+
 		$('.jspDrag').each(function(i){
-			$(this).prepend('<img src="sites/all/themes/software-responsive-theme/images/scrollmiddle.png" />');
+			$(this).prepend('<img src="http://localhost/piche2/sites/all/themes/software-responsive-theme/images/scrollmiddle.png" />');
 		});
 
 		$(function()
@@ -75,22 +86,17 @@
 		});
 
 
+		$('input').click(function () {
+		    $('input:not(:checked)').parent().removeClass("style1");
+		    $('input:checked').parent().addClass("style1");
+		});
+		$('input:checked').parent().addClass("style1");
+		});
 
-		// $(".background").each(function(i){
-			// $(this).prepend('<img src="sites/all/themes/software-responsive-theme/images/icons/pin1.png"/>');
-			// $(this).addClass("burg-filter" +(i+1));
-		// });
-
-        $('input').click(function () {
-            $('input:not(:checked)').parent().removeClass("style1");
-            $('input:checked').parent().addClass("style1");
-        });
-        $('input:checked').parent().addClass("style1");
-	});
-
+		//lazy line painter
 
 	var pathObj0 = {
-		    "button_kalk": {
+    "button_kalk": {
 			"strokepath": [
 				{"path":"M122.49947285655699,38.77000749973021C125.72911859321594,38.77512167739869,128.346,41.395158203125,128.346,44.626000000000005C128.346,44.626000000000005,128.346,135.481,128.346,135.481C128.346,138.715,125.724,141.337,122.49000000000001,141.337C122.49000000000001,141.337,57.114,141.337,57.114,141.337C53.879999999999995,141.337,51.257999999999996,138.71499999999997,51.257999999999996,135.481C51.257999999999996,135.481,51.257999999999996,44.626,51.257999999999996,44.626C51.257999999999996,41.391999999999996,53.879999999999995,38.769999999999996,57.114,38.769999999999996C57.114,38.769999999999996,122.481,38.769999999999996,122.481,38.769999999999996", "duration": 200},
 				{"path":"M113.817472856557,47.452007499730215C117.04711859321596,47.45712167739868,119.664,50.077158203124995,119.664,53.308C119.664,53.308,119.664,66.025,119.664,66.025C119.664,69.259,117.042,71.881,113.808,71.881C113.808,71.881,65.796,71.881,65.796,71.881C62.562000000000005,71.881,59.940000000000005,69.259,59.940000000000005,66.025C59.940000000000005,66.025,59.940000000000005,53.308,59.940000000000005,53.308C59.940000000000005,50.074,62.562000000000005,47.452,65.796,47.452C65.796,47.452,113.808,47.452,113.808,47.452", "duration": 200},
@@ -158,7 +164,7 @@
 		}).lazylinepainter('paint');
 
 
-
+		//Temporary mutes Video JS
 		$("#videojs-479-field-presentation-video-video").prop('muted', true);
 		$("#videojs-478-field-presentation-video-video").prop('muted', true);
 
