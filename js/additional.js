@@ -2,6 +2,61 @@
 
 	$(window).ready(function() {
 
+		$(document).ready(function(){
+			/*add classes for isotope filter*/
+			$(".isotope-filters > li").addClass(function(i){return "item" + (i + 1);});
+			$(".isotope-filters > li").addClass(function(i){return "item_filter";});
+			$('.item_filter').prepend('<div id="filter_image">');
+		});
+
+
+		//scroll through the news
+
+		// $(".view-id-jaunumi #isotope-container div.isotope-element:nth-child(7)").prepend('<section class="scroller"></section>');
+
+		//sroll full page on mouse wheel up or down
+
+		var $current, flag = false;
+
+		$(function() {
+		    $('body').mousewheel(function(event, delta) {
+		        if (flag) { return false; }
+		        $current = $('.scroller.current');
+
+		        console.log(delta);
+		        console.log($current);
+
+		        if (delta > 0) {
+		            $prev = $current.prev();
+
+		            if ($prev.length) {
+		                flag = true;
+		                $('body').scrollTo($prev, 1000, {
+		                    onAfter : function(){
+		                        flag = false;
+		                    }
+		                });
+		                $current.removeClass('current');
+		                $prev.addClass('current');
+		            }
+		        } else {
+		            $next = $current.next();
+
+		            if ($next.length) {
+		                flag = true;
+		                $('body').scrollTo($next, 1000, {
+		                    onAfter : function(){
+		                        flag = false;
+		                    }
+		                });
+		                $current.removeClass('current');
+		                $next.addClass('current');
+		            }
+		        }
+
+		        event.preventDefault();
+		    });
+		});
 
 		//Realizetie horizontal scroll
 		//changed scrollTop to scrollLeft
@@ -37,7 +92,7 @@
 		});
 
 		function scrollContent(direction) {
-		    var amount = (direction === "left" ? "-=5px" : "+=5px");
+		    var amount = (direction === "left" ? "-=10px" : "+=10px");
 		    $(".view-realiz-tie-projekti .view-content").animate({
 		        scrollLeft: amount
 		    }, 1, function() {
@@ -66,23 +121,25 @@
 		    }
     });
 
-		$("#block-menu-menu-front-page-buttons li.first").each(function(i){
+		//first menu buttons add class
+
+		$("#block-menu-menu-front-page-buttons li.first a").each(function(i){
 			$(this).attr('id', 'button_kalk');
 		});
 
-		$("#block-menu-menu-front-page-buttons li.last").each(function(i){
+		$("#block-menu-menu-front-page-buttons li.last a").each(function(i){
 			$(this).attr('id', 'button_burg');
 		});
 
 		//add points to burger scrollbar
 
 		$('.jspDrag').each(function(i){
-			$(this).prepend('<img src="http://localhost/piche2/sites/all/themes/software-responsive-theme/images/scrollmiddle.png" />');
+			$(this).prepend('<img src="http://new.piche.eu/sites/all/themes/software-responsive-theme/images/scrollmiddle.png" />');
 		});
 
 		$(function()
 		{
-			$('.group-left').jScrollPane();
+			$('.node-type-tipveida-projekts .group-left').jScrollPane();
 		});
 
 
@@ -168,6 +225,35 @@
 		$("#videojs-479-field-presentation-video-video").prop('muted', true);
 		$("#videojs-478-field-presentation-video-video").prop('muted', true);
 
+
+		$(function(){
+
+				// var $bl    = $(".view-realiz-tie-projekti .view-content"),
+				//     $th    = $(".view-realiz-tie-projekti .view-content #isotope-container"),
+				var $bl    = $(".node-tipveida-projekts #galleriffic #thumbs"),
+						$th    = $(".node-tipveida-projekts #galleriffic #thumbs ul.thumbs"),
+						blW    = $bl.outerWidth(),
+						blSW   = $bl[0].scrollWidth,
+						wDiff  = (blSW/blW)-1,  // widths difference ratio
+						mPadd  = 200,  // Mousemove Padding
+						damp   = 20,  // Mousemove response softness
+						mX     = 0,   // Real mouse position
+						mX2    = 0,   // Modified mouse position
+						posX   = 100,
+						mmAA   = blW-(mPadd*2), // The mousemove available area
+						mmAAr  = (blW/mmAA);    // get available mousemove fidderence ratio
+
+				$bl.mousemove(function(e) {
+						mX = e.pageX - this.offsetLeft;
+						mX2 = Math.min( Math.max(0, mX-mPadd), mmAA ) * mmAAr;
+				});
+
+				setInterval(function(){
+						posX += (mX2 - posX) / damp; // zeno's paradox equation "catching delay"
+						$th.css({marginLeft: -posX*wDiff });
+				}, 10);
+
+		});
 
 	});
 
