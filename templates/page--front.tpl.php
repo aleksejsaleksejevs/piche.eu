@@ -108,9 +108,9 @@
 <?php endif; ?>
 
 <div id="container">
-	<section id="intro" data-type="background" data-speed="10">
+	<section class="scroller current" id="intro" data-type="background" data-speed="10">
     <video autoplay="autoplay" preload="auto" loop="loop" id="bgvid">
-      <source src="//localhost/piche2/sites/all/themes/software-responsive-theme/video/timelapse.mp4" type="video/mp4">
+      <source src="//new.piche.eu/sites/all/themes/software-responsive-theme/video/MVI_1567.mp4" type="video/mp4">
     </video>
 				<?php print render($page['slide-1']); ?>
 				<div class="container-wrap">
@@ -206,7 +206,7 @@
 
 			</div>
 	</section>
-	<section id="presentation" data-type="background" data-speed="10">
+	<section class="scroller" id="presentation" data-type="background" data-speed="10">
 						<?php print render($page['slide-1-test']); ?>
 
 
@@ -215,7 +215,7 @@
 					</div> -->
 
 	</section>
-	<section id="angaru-katalogs" data-type="background" data-speed="10">
+	<section class="scroller" id="angaru-katalogs" data-type="background" data-speed="10">
 
 		<?php print render($page['slide-2']); ?>
 
@@ -229,7 +229,7 @@
 					</div>
 
 	</section>
-	<section id="news" data-type="background" data-speed="10">
+	<section class="scroller" id="news" data-type="background" data-speed="10">
 		<?php print render($page['slide-3']); ?>
 
 					<div id="slide-3-left-sidebar">
@@ -239,6 +239,8 @@
 						<?php print render($page['slide-3-content']); ?>
 					</div>
 	</section>
+</div>
+
 </div>
 
 <div id="footer">
@@ -287,7 +289,6 @@
 
 </div>
 
-</div>
 <script>
 (function ($) {
 

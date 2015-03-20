@@ -14,6 +14,8 @@ scripts[] = js/jquery.lazylinepainter-1.1.min.js
 scripts[] = js/raphael-min.js
 scripts[] = js/jquery.singlePageNav.js
 scripts[] = js/curtain.js
+scripts[] = js/jquery.mousewheel.js
+scripts[] = js/jquery.scrollTo-1.4.2-min.js
 
 
 regions[user_menu]  	 = User menu
