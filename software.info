@@ -9,13 +9,17 @@ stylesheets[all][] = css/media.css
 stylesheets[all][] = css/jquery.maximage.css
 stylesheets[all][] = css/aleksandrs.css
 stylesheets[all][] = css/maximage.css
-scripts[] = js/additional.js
+
+scripts[] = js/piche.js
 scripts[] = js/jquery.lazylinepainter-1.1.min.js
 scripts[] = js/raphael-min.js
-scripts[] = js/jquery.singlePageNav.js
-scripts[] = js/curtain.js
-scripts[] = js/jquery.mousewheel.js
-scripts[] = js/jquery.scrollTo-1.4.2-min.js
+scripts[] = js/masonry.pkgd.js
+scripts[] = js/jquery.isotope.perfectmasonry.js
+scripts[] = js/masonry-horizontal.js
+scripts[] = js/packery.pkgd.js
+scripts[] = js/imagesloaded.pkgd.js
+scripts[] = js/scrollingcarousel.2.0.js
+
 
 
 regions[user_menu]  	 = User menu
@@ -37,15 +41,10 @@ regions[footer_first]    = First Bottom
 regions[footer_second]   = Second Bottom
 regions[footer_third]    = Third Bottom
 regions[footer_forth]    = Forth Bottom
-regions[background]		 = Background position
-regions[slide-1]		 = Slide 1 Parallax position
-regions[slide-1-test]	 = Slide 1 test Parallax position
-regions[slide-2]		 = Slide 2 Parallax position
-regions[slide-2-left-sidebar]   = Left Sidebar Slide 2
-regions[slide-2-content]         = Content Slide 2
-regions[slide-3]		 = Slide 3 Parallax position
-regions[slide-3-left-sidebar]   = Left Sidebar Slide 3
-regions[slide-3-content]         = Content Slide 3
+regions[background]		   = Background position
+regions[slide-1]		     = Slide 1 Parallax position
+regions[piche-left-sidebar] = Left Sidebar
+regions[piche-content]   = Content
 
 
 features[] = logo

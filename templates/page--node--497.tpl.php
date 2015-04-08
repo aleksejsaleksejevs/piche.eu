@@ -205,6 +205,15 @@
 					<?php print render($page['clients']) ?>
 					<?php endif; ?>
 
+          <div id="piche-left-sidebar">
+            <?php print render($page['piche-left-sidebar']); ?>
+          </div>
+          <div id="piche-content" >
+            <div id="angaru-katalogs">
+              <?php print render($page['piche-content']); ?>
+            </div>
+          </div>
+
 	</section>
 
 </div>

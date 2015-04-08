@@ -205,6 +205,14 @@
 					<?php print render($page['clients']) ?>
 					<?php endif; ?>
 
+          <div id="piche-left-sidebar">
+            <?php print render($page['piche-left-sidebar']); ?>
+          </div>
+          <div id="piche-content">
+            <div class="grid-sizer"></div>
+            <?php print render($page['piche-content']); ?>
+          </div>
+
 	</section>
 
 </div>
@@ -258,3 +266,13 @@
 </div>
 
 </div>
+
+
+<script>
+(function ($) {
+
+
+
+})(jQuery);
+
+</script>

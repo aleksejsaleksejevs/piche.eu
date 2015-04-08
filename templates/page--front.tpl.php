@@ -65,6 +65,8 @@
  */
 ?>
 
+<div class="animsition111">
+
   <div class="menu_wrapper">
     <nav id="main-menu"  role="navigation">
       <a class="nav-toggle" href="#">Navigation</a>
@@ -81,7 +83,7 @@
     </nav><!-- end main-menu -->
   </div>
 
-<div class="background">
+<div class="background animsition" id="kool-swap">
 	<?php print render($page['background']); ?>
 
 
@@ -110,9 +112,14 @@
 <div id="container">
 	<section class="scroller current" id="intro" data-type="background" data-speed="10">
     <video autoplay="autoplay" preload="auto" loop="loop" id="bgvid">
-      <source src="//new.piche.eu/sites/all/themes/software-responsive-theme/video/MVI_1567.mp4" type="video/mp4">
+      <source src="//localhost/piche2/sites/all/themes/software-responsive-theme/video/MVI_1567.mp4" type="video/mp4">
     </video>
-				<?php print render($page['slide-1']); ?>
+			<?php print render($page['slide-1']); ?>
+
+      <!-- left slidebar region -->
+
+
+
 				<div class="container-wrap">
 				  <div class="content-sidebar-wrap">
 				    <div id="header_wrapper">
@@ -203,42 +210,8 @@
 					<?php print render($page['clients']) ?>
 					<?php endif; ?>
 
-
-			</div>
 	</section>
-	<section class="scroller" id="presentation" data-type="background" data-speed="10">
-						<?php print render($page['slide-1-test']); ?>
 
-
-					<!-- <div id="testdiv">
-
-					</div> -->
-
-	</section>
-	<section class="scroller" id="angaru-katalogs" data-type="background" data-speed="10">
-
-		<?php print render($page['slide-2']); ?>
-
-					<div id="slide-2-left-sidebar">
-						<?php print render($page['slide-2-left-sidebar']); ?>
-					</div>
-					<div id="slide-2-content">
-            <div id="projects-left"><img src="sites/all/themes/software-responsive-theme/images/arrow_left.png" /></div>
-            <div id="projects-right"><img src="sites/all/themes/software-responsive-theme/images/arrow_right.png" /></div>
-						<?php print render($page['slide-2-content']); ?>
-					</div>
-
-	</section>
-	<section class="scroller" id="news" data-type="background" data-speed="10">
-		<?php print render($page['slide-3']); ?>
-
-					<div id="slide-3-left-sidebar">
-						<?php print render($page['slide-3-left-sidebar']); ?>
-					</div>
-					<div id="slide-3-content">
-						<?php print render($page['slide-3-content']); ?>
-					</div>
-	</section>
 </div>
 
 </div>
@@ -289,18 +262,4 @@
 
 </div>
 
-<script>
-(function ($) {
-
-	$(window).ready(function() {
-
-            // The actual plugin
-            $('.menu-navigation-container ul.menu ').singlePageNav({
-                offset: $('.menu-navigation-container ul.menu').outerHeight(),
-                filter: ':not(.last a)',
-                updateHash: true,
-
-            });
-          });
-})(jQuery);
-</script>
+</div>
