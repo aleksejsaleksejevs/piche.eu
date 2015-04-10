@@ -18,9 +18,7 @@ scripts[] = js/jquery.isotope.perfectmasonry.js
 scripts[] = js/masonry-horizontal.js
 scripts[] = js/packery.pkgd.js
 scripts[] = js/imagesloaded.pkgd.js
-scripts[] = js/scrollingcarousel.2.0.js
-
-
+scripts[] = js/cursordivscroll.js
 
 regions[user_menu]  	 = User menu
 regions[languages]		 = Languages

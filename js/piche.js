@@ -4,18 +4,72 @@
 
 	$(window).on('load', function() {
 		$('.isotope-element').addClass("square");
-		$('img[width="400"]').closest('.isotope-element').addClass("wide");
+		$('img[width="400"]').closest('.isotope-element').addClass("wide width2");
 		$('.wide').removeClass('square');
-		$('img[height="400"]').closest('.isotope-element').addClass("tall");
+		$('img[height="400"]').closest('.isotope-element').addClass("tall height2");
 		$('.tall').removeClass('square');
 	});
 
 	$(window).load( function() {
-	    $('.page-node-498 #isotope-container').masonry({
-	        "itemSelector": ".isotope-element",
-	        "columnWidth": ".grid-sizer",
-	    });
-	});
+
+		// Isotope masonryHorizontal for Realizetie projekti
+
+		(function ($) {
+			var $container = $('.page-node-497 #isotope-container').isotope({
+					itemSelector: '.isotope-element',
+					layoutMode: 'masonryHorizontal',
+					gutter: 10
+			});
+			$container.imagesLoaded( function() {
+				$container.isotope();
+			});
+		}(jQuery));
+
+		// Isotope for News
+
+		(function ($) {
+			var $container = $('.page-node-498 #isotope-container'),
+				colWidth = function () {
+					var w = $container.width(),
+						columnNum = 1,
+						columnWidth = 0;
+					if (w > 1200) {
+						columnNum  = 5;
+					} else if (w > 900) {
+						columnNum  = 4;
+					} else if (w > 600) {
+						columnNum  = 3;
+					} else if (w > 300) {
+						columnNum  = 2;
+					}
+					columnWidth = Math.floor(w/columnNum);
+					$container.find('.isotope-element').each(function() {
+						var $item = $(this),
+							multiplier_w = $item.attr('class').match(/item-w(\d)/),
+							multiplier_h = $item.attr('class').match(/item-h(\d)/),
+							width = multiplier_w ? columnWidth*multiplier_w[1]-4 : columnWidth-4,
+							height = multiplier_h ? columnWidth*multiplier_h[1]*0.6-4 : columnWidth*0.6-4;
+						$item.css({
+							width: width,
+							height: height
+						});
+					});
+					return columnWidth;
+				},
+				isotope = function () {
+					$container.isotope({
+						itemSelector: '.isotope-element',
+						masonry: {
+							columnWidth: colWidth()
+						}
+					});
+				};
+		    isotope();
+		    $(window).on('debouncedresize', isotope);
+		}(jQuery));
+
+
+		});
 
 
 	$(window).ready(function() {
@@ -31,8 +85,7 @@
 
 		// define Isotope window width and height
 
-
-			$(document).ready(function() {  /* Just added this part */
+			$(document).ready(function() {
 			  $('.page-node-497 .isotope-element').each(function() {
 			    var $this = $(this),
 			      $img = $this.find('img');
@@ -44,8 +97,11 @@
 			        $this.width(w).height(h)
 			      });
 			  });
-	}); /* Just added this part */
+			});
 
+			//add class grid-sizer to first isotope element
+
+			$('#isotope-container div:first').addClass('grid-sizer');
 
 
 		/*
@@ -104,159 +160,82 @@
 
 
 
-		jQuery( document ).ready( function( $ ) {
-			var $container = $('.page-node-497 #isotope-container').isotope({
-					layoutMode: 'masonryHorizontal',
-					itemSelector: '.page-node-497 .isotope-element',
-			});
-			$container.imagesLoaded( function() {
-				$container.isotope();
-			});
-		});
 
-		//mouse scroll effect
-
-		// $(document).ready(function() {
-		// 	$('#isotope-container').scrollingCarousel({
-		// 			looped: false
-		// 	});
-		// });
-
-	//
-	// 	jQuery( document ).ready( function( $ ) {
-	// 	var $elems = $("html, body");
-	// 	var delta = 0;
-	//
-	// 	$("#isotope-container").on("mousemove", function(e) {
-	// 	    var h = $("#isotope-container").width();
-	// 	    var y = e.clientX - h / 2;
-	// 	    delta = y * 0.1;
-	// 			alert("hello");
-	// 	});
-	//
-	// 	$("#isotope-container").on("blur mouseleave", function() {
-	// 	    delta = 0;
-	// 	});
-	//
-	// 	(function f() {
-	// 	    if(delta) {
-	// 	        $elems.scrollLeft(function(i, v) {
-	// 	            return v + delta;
-	// 	        });
-	// 	    }
-	// 	    webkitRequestAnimationFrame(f);
-	// 	})();
-	// });
-
-//	News section isotope masonry/packery
-
-
-
-		// var $container = $('.page-node-498 #isotope-container'),
-		// colWidth = function () {
-		// 	var w = $container.width(),
-		// 		columnNum = 1,
-		// 		columnWidth = 225;
-		// 	if (w > 900) {
-		// 		columnNum  = 5;
-		// 	} else if (w > 600) {
-		// 		columnNum  = 4;
-		// 	} else if (w > 500) {
-		// 		columnNum  = 3;
-		// 	} else if (w > 250) {
-		// 		columnNum  = 2;
-		// 	}
-		// 	columnWidth = Math.floor(w/columnNum);
-		// 	$container.find('.isotope-element').each(function() {
-		// 		var $item = $(this),
-		// 			multiplier_w = $item.attr('class').match(/item-w(\d)/),
-		// 			multiplier_h = $item.attr('class').match(/item-h(\d)/),
-		// 			width = multiplier_w ? columnWidth*multiplier_w[1] - 4 : columnWidth-4,
-		// 			height = multiplier_h ? columnWidth*multiplier_h[1]*0.5-4 : columnWidth*0.5-4;
-		// 		$item.css({
-		// 			width: width,
-		// 			height: height
-		// 		});
-		// 	});
-		// 	return columnWidth;
-		// },
-		// isotope = function () {
-		// 	$container.isotope({
-		// 		isResizeBound: true,
-		// 		itemSelector: '.isotope-element',
-		// 		masonry: {
-		// 			columnWidth: colWidth(),
-		// 			gutter: 0
-		// 		}
-		// 	});
-		// };
-		// isotope();
 		//
-    // $(window).on("debouncedresize", isotope);
+		//
+		// (function ($) {
+		// 	var $container = $('.page-node-497 #isotope-container'),
+		// 		colWidth = function () {
+		// 			var h = $container.height(),
+		// 				rowNum = 1,
+		// 				rowHeight = 0;
+		// 			if (h > 1200) {
+		// 				rowNum  = 5;
+		// 			} else if (h > 900) {
+		// 				rowNum  = 4;
+		// 			} else if (h > 600) {
+		// 				rowNum  = 3;
+		// 			} else if (h > 300) {
+		// 				rowNum  = 2;
+		// 			}
+		// 			rowHeight = Math.floor(h/rowNum);
+		// 			$container.find('.isotope-element').each(function() {
+		// 				var $item = $(this),
+		// 					multiplier_w = $item.attr('class').match(/item-w(\d)/),
+		// 					multiplier_h = $item.attr('class').match(/item-h(\d)/),
+		// 					width = multiplier_w ? rowHeight*multiplier_w[1]-4 : rowHeight-4,
+		// 					height = multiplier_h ? rowHeight*multiplier_h[1]-4 : rowHeight-1.1*4;
+		// 				$item.css({
+		// 					width: width,
+		// 					height: height
+		// 				});
+		// 			});
+		// 			return rowNum;
+		// 		},
+		// 		isotope = function () {
+		// 			$container.isotope({
+		// 				itemSelector: '.isotope-element',
+		// 				layoutMode: 'masonryHorizontal',
+		// 				masonryHorizontal: {
+		// 					rowHeight: colWidth()
+		// 				}
+		// 			});
+		// 		};
+		// 		isotope();
+		// 		$(window).on('debouncedresize', isotope);
+		// }(jQuery));
 
 
-//Realizetie horizontal scroll
-//changed scrollTop to scrollLeft
 
-var step = 25;
-var scrolling = false;
+		// Mouse scroll effect by CursorDivScroll
 
-// Wire up events for the 'scrollLeft' link:
-$("#projects-left img").bind("click", function(event) {
-		event.preventDefault();
-		// Animates the scrollTop property by the specified
-		// step.
-		$(".view-realiz-tie-projekti .view-content").animate({
-				scrollLeft: "-=" + step + "px"
+		//first of all add id for .view-content
+		$(".page-node-497 .view-realiz-tie-projekti .view-content").each(function(i){
+			$(this).attr('id', 'scroller');
 		});
-}).bind("mousedown", function(event) {
-		scrolling = true;
-		scrollContent("left");
-}).bind("mouseup", function(event) {
-		scrolling = false;
-});
 
-$("#projects-right img").bind("click", function(event) {
-		event.preventDefault();
-		$(".view-realiz-tie-projekti .view-content").animate({
-				scrollLeft: "+=" + step + "px"
+		// then start CursorDivScroll
+		// is set in page--node--497.tpl.php
+
+
+		$(".view-realiz-tie-projekti .view-content").scroll(function () {
+				var x = $(this).scrollLeft();
+				if (x > 80) {
+						$('#projects-left img').fadeIn();
+				} else {
+						$('#projects-left img').fadeOut(500);
+				}
+
 		});
-}).bind("mousedown", function(event) {
-		scrolling = true;
-		scrollContent("right");
-}).bind("mouseup", function(event) {
-		scrolling = false;
-});
 
-function scrollContent(direction) {
-		var amount = (direction === "left" ? "-=10px" : "+=10px");
-		$(".view-realiz-tie-projekti .view-content").animate({
-				scrollLeft: amount
-		}, 1, function() {
-				if (scrolling) {
-						scrollContent(direction);
+
+		$(".view-realiz-tie-projekti .view-content").scroll(function() {
+				if ($('.view-realiz-tie-projekti .view-content #isotope-container').width() <= ($(".view-realiz-tie-projekti .view-content").width() + $(".view-realiz-tie-projekti .view-content").scrollLeft())) {
+					$('#projects-right img').fadeOut(500);
+				} else {
+						$('#projects-right img').fadeIn();
 				}
 		});
-}
-
-$(".view-realiz-tie-projekti .view-content").scroll(function () {
-		var x = $(this).scrollLeft();
-		if (x > 80) {
-				$('#projects-left img').fadeIn();
-		} else {
-				$('#projects-left img').fadeOut(1300);
-		}
-
-});
-
-
-$(".view-realiz-tie-projekti .view-content").scroll(function() {
-		if ($('.view-realiz-tie-projekti .view-content #isotope-container').width() <= ($(".view-realiz-tie-projekti .view-content").width() + $(".view-realiz-tie-projekti .view-content").scrollLeft())) {
-			$('#projects-right img').fadeOut(1300);
-		} else {
-				$('#projects-right img').fadeIn();
-		}
-});
 
 //first menu buttons add class
 

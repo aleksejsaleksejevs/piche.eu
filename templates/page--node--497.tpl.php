@@ -209,6 +209,8 @@
             <?php print render($page['piche-left-sidebar']); ?>
           </div>
           <div id="piche-content" >
+            <div id="projects-left"><img src="sites/all/themes/software-responsive-theme/images/arrow_left.png" /></div>
+            <div id="projects-right"><img src="sites/all/themes/software-responsive-theme/images/arrow_right.png" /></div>
             <div id="angaru-katalogs">
               <?php print render($page['piche-content']); ?>
             </div>
@@ -267,3 +269,10 @@
 </div>
 
 </div>
+<script>
+(function ($) {
+  $(window).ready(function() {
+      CursorDivScroll( 'scroller', 40, 40 ).noVertical();
+  });
+} ) ( jQuery );
+</script>
